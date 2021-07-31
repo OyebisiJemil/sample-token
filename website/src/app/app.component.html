@@ -1,0 +1,47 @@
+<div class="container" style="margin-top: 5%;">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="text-center">Sample token ICO SALE</h1>
+      <hr />
+      <br />
+    </div>
+    <div id="loader">
+      <p class="text-center" *ngIf="loading">Loading...</p>
+    </div>
+    <div id="content" *ngIf="content" class="text-center">
+      <p>
+        Introducing "Sample Token" (SMLT)!
+        Token price is <span>{{tokenPrice}}</span> Ether. You currently have <span>{{sampleTokenBalance}}</span>&nbsp;SMLT
+      </p>
+      <br />
+      <form role="form" [formGroup]="tokenForm">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control" formControlName="numberOfTokens" id="numberOfToken" type="number" name="number"  min="1"
+              pattern="[0-9]" />
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-secondary btn-lg" (click)="buyTokens()">Buy Tokens</button>
+            </span>
+          </div>
+        </div>
+      </form>
+      <br>
+      <div class="progress">
+        <div id="progress" 
+             class="progress-bar progress-bar progress-bar-striped active" 
+             aria-valuemin="0" 
+             role="progressbar"
+             aria-valuemax="100"
+             [attr.aria-valuenow]="salesProgress" 
+             [style.width.%]="salesProgress">
+          {{salesProgress}}% Complete
+        </div>
+
+      </div>
+      <p><span>{{tokensSold}}</span> / <span>{{tokensAvailable}}</span> tokens sold
+      </p>
+      <hr />
+      <p id="accountAddress">Your Account: {{account}}</p>
+    </div>
+  </div>
+</div>
